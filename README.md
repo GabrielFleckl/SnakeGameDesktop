@@ -23,7 +23,7 @@
 
 Aqui você pode conferir o layout do projeto. <br>
 
-[👉 Link para visualizar a versão WEB](https://projeto-snake.vercel.app/)
+[👉 Link para visualizar a versão WEB](https://snake-game-desktop.vercel.app/)
 
 <br>
 
