@@ -5,28 +5,67 @@
   font-family: 'Poppins', sans-serif
 
 body
-  background-color: #191919
   display: flex
-  justify-content: center
   flex-direction: column
   min-height: 100vh
-  color: #fff
-  padding: 30px
+  padding: 30px 40px
+
+.dark-theme
+  background-color: #161616
+  color: #F7FAFC
+
+.white-theme
+  background-color: #F5F5F4
+  color: #101010
+  canvas
+    box-shadow: 0px 0px 15px 1px #16161679
+  .how-to-play, .speaker, .theme-Btn, .btn-modal
+    color: #F7FAFC
+  .final__score
+    color: #F7FAFC
 
 canvas
-  background-color: #111111
-  box-shadow: 0px 0px 15px 1px #dddddd28
+  background-color: #101010
+  box-shadow: 0px 0px 15px 1px #dddddd1f
   width: 400px
   align-self: center
+  border-radius: 5px
+
+.header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 15px
+  .util-btns
+    display: flex
+    gap: 16px
+    list-style: none
+
 .title-game
   display: grid
   place-items: center
   margin-bottom: 1em
 
+.btn-header
+  font-size: 2.1em
+  transition: .3s ease
+  cursor: pointer
+  background-color: #6d7e08
+  padding: 8px
+  border-radius: 5px
+  &:hover
+    color: #BAD80A
+  &:active
+    color: #7e920b
+
+.how-to-play, .speaker, .theme-Btn
+  transition: .1s ease
+  &:hover
+    transform: scale(1.1)
+  &:active
+    transform: scale(1.0)
+
 .score
-  position: absolute
-  top: 3%
-  left: 2%
   font-size: 1.5em
   .score__value
     font-weight: 700
@@ -42,14 +81,14 @@ canvas
   flex-direction: column
   align-items: center
   background-color: #292929
-  padding: 15px
+  padding: 50px
   border-radius: 15px
   z-index: 1
   .game__over
     text-transform: uppercase
     font-weight: 700
     font-size: 3rem
-    color: #ff0000
+    color: #BAD80A
   .final__score
     font-weight: 600
     font-size: 1.5rem
@@ -64,6 +103,59 @@ canvas
     margin-top: 40px
     transition: .2s ease
     &:hover
-      background-color: #23cf23
+      background-color: #7e920b
       color: #ddd
       transition: .2s ease
+
+.container-modal__fade, .container-modal__modal
+  transition: 0.3s
+  pointer-events: all
+
+.container-modal
+  .container-modal__fade
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: #5e5e5e60
+    z-index: 5
+  .container-modal__modal
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    z-index: 10
+    animation: fade-in .3s ease
+  .btn-modal
+    font-size: 2em
+    transition: .3s ease
+    cursor: pointer
+    background-color: #6d7e08
+    padding: 5px
+    border-top-right-radius: 15px
+    position: absolute
+    right: 0
+    &:hover
+      color: #BAD80A
+    &:active
+      color: #7e920b
+      
+.hide
+  display: none
+
+@keyframes fade-in
+  from 
+    opacity: 0
+    transform: scale(1.5)
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-10%)
+  to 
+    opacity: 1
+    transform: scale(1)
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)

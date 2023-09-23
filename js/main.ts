@@ -1,16 +1,24 @@
-const canvas = document.querySelector('canvas') as HTMLCanvasElement
-const score = document.querySelector('.score__value') as HTMLElement | any
-const finalScore = document.querySelector('.final__score > span') as HTMLElement 
-const menuScreen = document.querySelector('.menu__screen') as HTMLElement
+const body = document.querySelector("body") as HTMLElement
+const canvas = document.querySelector("canvas") as HTMLCanvasElement
+const score = document.querySelector(".score__value") as HTMLElement | any
+const finalScore = document.querySelector(".final__score > span") as HTMLElement
+const menuScreen = document.querySelector(".menu__screen") as HTMLElement
 const btnPLay = document.querySelector(".btn__play") as HTMLElement
+const speakerBtn = document.querySelector(".speaker") as HTMLElement
+const themeBtn = document.querySelector(".theme-Btn") as HTMLElement
+const howToPlayBtn = document.querySelector(".how-to-play") as HTMLElement
+const howToPLayModal = document.querySelector(".container-modal") as HTMLElement
+const closeModal = document.querySelector(".btn-modal") as HTMLElement
+const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
 
-const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-
-const audio = new Audio('assets/audio.mp3')
+const audio = new Audio("assets/audio/audio.mp3") as HTMLAudioElement
+audio.volume = 0.2
+const mouseClick = new Audio("assets/audio/mouse_click.mp3") as HTMLAudioElement
+mouseClick.volume = 0.2
+let isMuted = false
 
 const size: number = 30
-
-const initialPosition = { x: 270, y: 240 }
+const initialPosition: { x: number, y: number } = { x: 270, y: 240 }
 
 let snake = [
   initialPosition,
@@ -25,7 +33,7 @@ const randomNumber = (max: number, min: number) => {
 }
 
 const randomPosition = () => {
-  const number = randomNumber(0, canvas.width - size)
+  const number: number = randomNumber(0, canvas.width - size)
   return Math.round(number / 30) * 30
 }
 
@@ -45,7 +53,7 @@ const food = {
 }
 
 let direction: string | undefined
-let loopId:any
+let loopId: any
 
 const drawFood = () => {
 
@@ -59,11 +67,11 @@ const drawFood = () => {
 }
 
 const drawSnake = () => {
-  ctx.fillStyle = "#ddd"
+  ctx.fillStyle = "#7e920b"
 
   snake.forEach((position, index) => {
     if (index == snake.length - 1) {
-      ctx.fillStyle = "#fff"
+      ctx.fillStyle = "#BAD80A"
     }
     ctx.fillRect(position.x, position.y, size, size)
   })
@@ -92,8 +100,8 @@ const moveSnake = () => {
 }
 
 const drawGrid = () => {
-  ctx.lineWidth = 1
-  ctx.strokeStyle = '#191919'
+  ctx.lineWidth = 2
+  ctx.strokeStyle = '#2F2F2F'
 
   for (let i = 30; i < canvas.width; i += 30) {
     ctx.beginPath()
@@ -106,7 +114,6 @@ const drawGrid = () => {
     ctx.lineTo(600, i)
     ctx.stroke()
   }
-
 }
 
 const checkEat = () => {
@@ -115,7 +122,12 @@ const checkEat = () => {
   if (head.x == food.x && head.y == food.y) {
     incrementScore()
     snake.push(head)
-    audio.play()
+
+    if (isMuted === false) {
+      audio.play()
+    } else {
+      audio.pause()
+    }
 
     let x = randomPosition()
     let y = randomPosition()
@@ -151,7 +163,7 @@ const checkCollision = () => {
 
 const gameOver = () => {
   direction = undefined
-
+  canvas.style.display = "none"
   menuScreen.style.display = 'flex'
   finalScore.innerText = score.innerText
   canvas.style.filter = "blur(5px)"
@@ -192,9 +204,39 @@ document.addEventListener("keydown", ({ key }) => {
 btnPLay.addEventListener("click", () => {
   score.innerText = "00"
   menuScreen.style.display = "none"
+  canvas.style.display = "block"
   canvas.style.filter = "none"
   snake = [
     initialPosition
   ]
+})
+
+speakerBtn.addEventListener("click", () => {
+  isMuted = !isMuted
+  const speakerIcon = speakerBtn.children[0]
+  speakerIcon.classList.toggle("ph-speaker-high")
+  speakerIcon.classList.toggle("ph-speaker-slash")
 
 })
+
+themeBtn.addEventListener("click", () => {
+  const themeIcon = themeBtn.children[0]
+  themeIcon.classList.toggle("ph-moon")
+  themeIcon.classList.toggle("ph-sun")
+  body.classList.toggle("dark-theme")
+  body.classList.toggle("white-theme")
+})
+
+body.addEventListener("click", () => {
+  if (isMuted === false) {
+    mouseClick.play()
+  } else {
+    mouseClick.pause()
+  }
+})
+
+function toggleModal() {
+  howToPLayModal.classList.toggle("hide");
+}
+howToPlayBtn.addEventListener("click", toggleModal);
+closeModal.addEventListener("click", toggleModal);

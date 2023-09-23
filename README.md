@@ -29,6 +29,14 @@ Aqui você pode conferir o layout do projeto. <br>
 
 <img alt="layout-web" src="img/laptop.png" width="100%"> 
 
+<br>
+
+<img alt="layout-web" src="img/laptop_white.png" width="100%"> 
+
+<br>
+
+<img alt="layout-web" src="img/modal.png" width="100%"> 
+
 ---
 
 ## 🚀 Tecnologias
@@ -48,7 +56,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 "Snake's Game" é um projeto do clássico jogo da cobra, desenvolvido com uma mistura de tecnologias web modernas, incluindo HTML, CSS, SASS, JavaScript, TypeScript, Node.js e Electron.
 
 ## 🖥️ Versão Desktop
-"Snake's Game" é multi-plataforma e oferece uma versão desktop para uma experiência de jogo mais confortável caso queira executar em seu computador. Para acessar a versão desktop, basta baixar o projeto e executar '<strong>npm run start</strong>' na pasta raiz do app. Você terá acesso a uma interface de desktop por meio do electron, onde também é possível executar '<strong>npm run make</strong>' para gerar uma pasta com o instalador do Snake´s Game.
+"Snake's Game" é multi-plataforma e oferece uma versão desktop para uma experiência de jogo mais confortável caso queira executar em seu computador. Para acessar a versão desktop, basta baixar o projeto e executar'<strong>npm i</strong>' e '<strong>npm run start</strong>' na pasta raiz do app. Você terá acesso a uma interface de desktop por meio do electron, onde também é possível executar '<strong>npm run make</strong>' para gerar uma pasta com o instalador do Snake´s Game.
 
 ## 📝 Licença
 

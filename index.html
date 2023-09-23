@@ -7,32 +7,50 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="sass/styles.css">
-  <title>Snake Game 🐍</title>
+  <link rel="shortcut icon" href="./assets//favicon/favicon.ico" type="image/x-icon">
+  <title>Snake´s Game 🐍</title>
 </head>
 
-<body>
+<body class="white-theme">
+  
+  <header class="header">
+    <div class="score">
+      Score: 
+      <span class="score__value">00</span>
+    </div>
+    <ul class="util-btns">
+      <li class="how-to-play"><i class="ph ph-game-controller btn-header"></i></li>
+      
+      <li class="speaker"><i class="ph ph-speaker-high btn-header"></i></li>
 
-  <h1 class="title-game">SNAKE GAME 🐍</h1>
+      <li class="theme-Btn"><i class="ph ph-moon btn-header"></i></li>
+    </ul>
+  </header>
 
-  <div class="score">
-    Score: 
-    <span class="score__value">00</span>
+  <h1 class="title-game">SNAKE´S GAME 🐍</h1>
+
+  <div class="container-modal hide">
+    <div class="container-modal__fade"></div>
+    <div class="container-modal__modal">
+      <i class="ph ph-x btn-modal"></i>
+      <img src="img/Keyboard.png" alt="">
+    </div>
   </div>
+
   <div class="menu__screen">
     <span class="game__over">Game Over</span>
     <span class="final__score">Score: 
       <span>00</span>
     </span>
-
-    <button class="btn__play">Jogar Novamente</button>
+    <button class="btn__play">Jogar Novamente!</button>
   </div>
 
   <canvas 
   width="600" 
   height="600"
   >
-
   </canvas>
 
   <script src="js/main.js"></script>

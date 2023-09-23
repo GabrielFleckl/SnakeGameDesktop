@@ -3,10 +3,11 @@ const { app, BrowserWindow } = require('electron')
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
-    height: 600,
-    autoHideMenuBar: true
+    height: 800,
+    autoHideMenuBar: true,
+    icon: "assets/favicon/favicon.ico"
   })
-  win.maximize()
+  
   win.loadFile('index.html')
 }
 
